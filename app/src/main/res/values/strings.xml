@@ -1,5 +1,13 @@
 <resources>
+    <!-- Contact list activity -->
     <string name="app_name">FT_HANGOUTS</string>
     <string name="logo">42_logo</string>
     <string name="color_menu">color Menu</string>
+    <string name="avatar">avatar</string>
+    <string name="call">call</string>
+    <string name="message">message</string>
+    <string name="username">username</string>
+    <!-- Menu dropdown -->
+    <string name="add_contact">Add contact</string>
+    <string name="change_color">Change header color</string>
 </resources>

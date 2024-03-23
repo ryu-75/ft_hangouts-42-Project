@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dropdown" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
+    </style>
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:popupMenuStyle">@drawable/popup_menu_background</item>
+    </style>
+</resources>
