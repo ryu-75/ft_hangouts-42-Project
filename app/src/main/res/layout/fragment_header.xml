@@ -5,39 +5,43 @@
     android:id="@+id/fragment_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <RelativeLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="UselessParent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/bg_with_inner_shadow"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/logo"/>
+            android:background="@drawable/bg_with_inner_shadow"
+            android:contentDescription="@string/logo" />
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:clickable="true"
+            android:contentDescription="@string/logo"
             android:focusable="true"
-            android:src="@drawable/ic_42_logo_svg"
-            android:contentDescription="@string/logo" />
+            android:src="@drawable/ic_42_logo_svg" />
 
         <ImageView
             android:id="@+id/color_menu"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:clickable="true"
             android:contentDescription="@string/color_menu"
             android:focusable="true"
             android:src="@drawable/ic_action_trois_points" />
 
     </RelativeLayout>
+
 </LinearLayout>

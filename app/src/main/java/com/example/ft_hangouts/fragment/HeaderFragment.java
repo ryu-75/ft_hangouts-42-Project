@@ -4,24 +4,30 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import com.example.ft_hangouts.ContactList;
 import com.example.ft_hangouts.MainActivity;
 import com.example.ft_hangouts.R;
+import com.example.ft_hangouts.interfaces.OnAddContactClickListener;
 
-public class HeaderFragment extends Fragment {
+import java.util.Objects;
+
+public class HeaderFragment extends Fragment implements OnAddContactClickListener {
     private ImageView   logoImageView;
     private ImageView   colorMenu;
     public HeaderFragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,9 +35,6 @@ public class HeaderFragment extends Fragment {
         // Init views
         logoImageView = view.findViewById(R.id.logo);
         colorMenu = view.findViewById(R.id.color_menu);
-        // Add initial header content
-        setLogoVisibility(true);
-        setColorMenu(true);
         // Add onClickListener on logo
         logoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,18 +46,34 @@ public class HeaderFragment extends Fragment {
         colorMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intent = new Intent(getActivity(), ContactList.class);
-                startActivity(intent);
+                showPopupMenu(v);
             }
         });
         return view;
     }
 
-    public void setLogoVisibility(boolean isVisible) {
-        logoImageView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+    public void showPopupMenu(View v) {
+        PopupMenu   popupMenu = new PopupMenu(getActivity(), colorMenu);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_dropdown, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.add_contact) {
+                    onAddContactClicked();
+                    return true;
+                } else return item.getItemId() == R.id.change_color;
+            }
+        });
+        popupMenu.show();
     }
 
-    public void setColorMenu(boolean isVisible) {
-        colorMenu.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+    @Override
+    public void onAddContactClicked() {
+        ContactFragment contactFragment = new ContactFragment();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_header, contactFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
