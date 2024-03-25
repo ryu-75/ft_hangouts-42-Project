@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Ft_hangouts"
         tools:targetApi="31">
         <activity
-            android:name=".ContactList"
+            android:name=".ui.AddContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ContactList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

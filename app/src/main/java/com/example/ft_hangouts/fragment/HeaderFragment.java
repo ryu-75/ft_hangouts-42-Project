@@ -11,16 +11,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
-import com.example.ft_hangouts.ContactList;
 import com.example.ft_hangouts.MainActivity;
 import com.example.ft_hangouts.R;
 import com.example.ft_hangouts.interfaces.OnAddContactClickListener;
-
-import java.util.Objects;
 
 public class HeaderFragment extends Fragment implements OnAddContactClickListener {
     private ImageView   logoImageView;
