@@ -1,4 +1,4 @@
-package com.example.ft_hangouts;
+package com.example.ft_hangouts.ui;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ft_hangouts.R;
 import com.example.ft_hangouts.fragment.HeaderFragment;
 
 public class ContactList extends AppCompatActivity {
@@ -26,10 +27,10 @@ public class ContactList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact_list);
 
-        FrameLayout frameLayout = findViewById(R.id.fragment_header);
+        FrameLayout frameHeaderLayout = findViewById(R.id.fragment_header);
         HeaderFragment headerFragment = new HeaderFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(frameLayout.getId(), headerFragment);
+        transaction.add(frameHeaderLayout.getId(), headerFragment);
         transaction.commit();
     }
 }
