@@ -4,23 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import com.example.ft_hangouts.MainActivity;
 import com.example.ft_hangouts.R;
-import com.example.ft_hangouts.interfaces.OnAddContactClickListener;
+import com.example.ft_hangouts.ui.AddContactActivity;
 
-public class HeaderFragment extends Fragment implements OnAddContactClickListener {
+public class HeaderFragment extends Fragment {
     private ImageView   logoImageView;
     private ImageView   colorMenu;
+    private FrameLayout showPopup;
     public HeaderFragment() {
         // Required empty public constructor
     }
@@ -55,21 +56,12 @@ public class HeaderFragment extends Fragment implements OnAddContactClickListene
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.add_contact) {
-                    onAddContactClicked();
+                    Intent  intent = new Intent(getActivity(), AddContactActivity.class);
+                    startActivity(intent);
                     return true;
                 } else return item.getItemId() == R.id.change_color;
             }
         });
         popupMenu.show();
-    }
-
-    @Override
-    public void onAddContactClicked() {
-        ContactFragment contactFragment = new ContactFragment();
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_header, contactFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
 }
